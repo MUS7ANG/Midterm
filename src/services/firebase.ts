@@ -1,0 +1,1 @@
+const firebaseAPI='https://fin-calculator-salikh-default-rtdb.europe-west1.firebasedatabase.app/'

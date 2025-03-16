@@ -4,6 +4,7 @@ import { CssBaseline, ThemeProvider, createTheme } from '@mui/material';
 import AddIncome from './pages/AddIncome';
 import AddExpense from './pages/AddExpense';
 import IncomeList from './pages/IncomeList';
+import ExpenseList from './pages/ExpenseList';
 import Stats from './pages/Stats';
 import './App.css';
 
@@ -16,6 +17,7 @@ const App = () => {
         <BrowserRouter>
           <Routes>
             <Route path="/incomes" element={<IncomeList />} />
+            <Route path="/expenses" element={<ExpenseList />} />
             <Route path="/stats" element={<Stats />} />
             <Route path="/add-income" element={<AddIncome />} />
             <Route path="/add-expense" element={<AddExpense />} />

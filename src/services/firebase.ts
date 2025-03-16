@@ -86,6 +86,27 @@ export const deleteItem = async (type: 'incomes' | 'expenses', id: string) => {
     }
 };
 
+// Новые функции для категорий
+export const addIncomeCategory = async (category: Omit<Category, 'id'>) => {
+    try {
+        const response = await axiosApi.post('/incomeCategories.json', category);
+        return response.data.name;
+    } catch (error) {
+        console.error('Error adding income category:', error);
+        throw error;
+    }
+};
+
+export const addExpenseCategory = async (category: Omit<Category, 'id'>) => {
+    try {
+        const response = await axiosApi.post('/expenseCategories.json', category);
+        return response.data.name;
+    } catch (error) {
+        console.error('Error adding expense category:', error);
+        throw error;
+    }
+};
+
 export const updateCategory = async (type: 'incomeCategories' | 'expenseCategories', id: string, name: string) => {
     try {
         await axiosApi.patch(`/${type}/${id}.json`, { name });

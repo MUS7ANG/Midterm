@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react';
-import { Income, Expense, Category } from '../types';
+import { useState, useEffect } from 'react';
+import { Typography, Box } from '@mui/material';
 import { fetchIncomes, fetchExpenses, fetchIncomeCategories, fetchExpenseCategories } from '../services/firebase';
+import { Income, Expense, Category } from '../types';
 
 const Stats = () => {
     const [incomes, setIncomes] = useState<Income[]>([]);
@@ -25,7 +26,6 @@ const Stats = () => {
                 console.error('Error loading data:', error);
             }
         };
-
         loadData();
     }, []);
 
@@ -44,24 +44,26 @@ const Stats = () => {
     }));
 
     return (
-        <div>
-            <h2>Статистика</h2>
-            <p>Общий доход: {totalIncome} сом</p>
+        <Box sx={{ padding: 3 }}>
+            <Typography variant="h4" gutterBottom>
+                Статистика
+            </Typography>
+            <Typography>Общий доход: {totalIncome} сом</Typography>
             {incomeByCategory.map((cat) => (
-                <p key={cat.name}>
+                <Typography key={cat.name}>
                     {cat.name}: {cat.amount} сом
-                </p>
+                </Typography>
             ))}
-            <p>Общие расходы: {totalExpense} сом</p>
+            <Typography>Общие расходы: {totalExpense} сом</Typography>
             {expenseByCategory.map((cat) => (
-                <p key={cat.name}>
+                <Typography key={cat.name}>
                     {cat.name}: {cat.amount} сом
-                </p>
+                </Typography>
             ))}
-            <p>
+            <Typography>
                 Баланс: {balance} сом {balance >= 0 ? '(в плюсе)' : '(в минусе)'}
-            </p>
-        </div>
+            </Typography>
+        </Box>
     );
 };
 
